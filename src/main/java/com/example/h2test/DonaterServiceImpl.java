@@ -24,4 +24,19 @@ public class DonaterServiceImpl implements DonaterService {
     public List<Donater> getAllDonaters() {
         return (List<Donater>) donaterRepository.findAll();
     }
+
+    @Override
+    public Donation addDonation(Long donaterId, Donation donation) {
+        Donater donater = donaterRepository.findById(donaterId).get();
+        List<Donation> donations = donater.getDonations();
+        donations.add(donation);
+        donater.setDonations(donations);
+        donaterRepository.save(donater);
+        return donation;
+    }
+
+    @Override
+    public List<Donation> getDonaterDonations(Long id) {
+        return donaterRepository.findById(id).get().getDonations();
+    }
 }

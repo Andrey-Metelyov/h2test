@@ -27,9 +27,19 @@ public class H2TestController {
         return donaterService.getDonaterById(id);
     }
 
+    @GetMapping(path = "donations/{id}")
+    public List<Donation> getDonaterDonations(@PathVariable final Long id) {
+        return donaterService.getDonaterDonations(id);
+    }
+
     @PostMapping
     public void addDonater(@RequestBody Donater donater) {
         donaterService.addDonater(donater);
+    }
+
+    @PostMapping(path = "/{id}")
+    public void addDonation(@PathVariable final Long id, @RequestBody Donation donation) {
+        donaterService.addDonation(id, donation);
     }
 
 }

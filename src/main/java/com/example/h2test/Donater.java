@@ -1,9 +1,6 @@
 package com.example.h2test;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +12,8 @@ public class Donater {
 
     private String name;
 
+    @OneToMany(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "donater_id", nullable = false)
     private List<Donation> donations = new ArrayList<>();
 
     public void setId(Long id) {
@@ -40,5 +39,4 @@ public class Donater {
     public void setDonations(List<Donation> donations) {
         this.donations = donations;
     }
-
 }
