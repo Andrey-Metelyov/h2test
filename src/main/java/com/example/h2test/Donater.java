@@ -1,7 +1,6 @@
 package com.example.h2test;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "donaters")
@@ -12,9 +11,15 @@ public class Donater {
 
     private String name;
 
-    @OneToMany(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "donater_id", nullable = false)
-    private List<Donation> donations = new ArrayList<>();
+//    @OneToMany(cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "donater_id", nullable = false)
+    @ElementCollection
+    @OrderColumn
+    private List<String> donations;
+
+    @ElementCollection
+    @OrderColumn
+    private List<Integer> donationValues;
 
     public void setId(Long id) {
         this.id = id;
@@ -32,11 +37,19 @@ public class Donater {
         this.name = name;
     }
 
-    public List<Donation> getDonations() {
+    public List<String> getDonations() {
         return donations;
     }
 
-    public void setDonations(List<Donation> donations) {
+    public void setDonations(List<String> donations) {
         this.donations = donations;
+    }
+
+    public List<Integer> getDonationValues() {
+        return donationValues;
+    }
+
+    public void setDonationValues(List<Integer> value) {
+        this.donationValues = value;
     }
 }

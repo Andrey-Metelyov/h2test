@@ -28,7 +28,7 @@ public class H2TestController {
     }
 
     @GetMapping(path = "donations/{id}")
-    public List<Donation> getDonaterDonations(@PathVariable final Long id) {
+    public List<String> getDonaterDonations(@PathVariable final Long id) {
         return donaterService.getDonaterDonations(id);
     }
 
@@ -38,8 +38,8 @@ public class H2TestController {
     }
 
     @PostMapping(path = "/{id}")
-    public void addDonation(@PathVariable final Long id, @RequestBody Donation donation) {
-        donaterService.addDonation(id, donation);
+    public void addDonation(@PathVariable final Long id, @RequestBody String donation, @RequestBody Integer value) {
+        donaterService.addDonation(id, donation, value);
     }
 
 }

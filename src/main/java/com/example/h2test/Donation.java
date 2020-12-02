@@ -1,11 +1,10 @@
 package com.example.h2test;
 
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name = "donations")
+//@Entity(name = "donations")
 public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

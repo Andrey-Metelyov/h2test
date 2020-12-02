@@ -9,7 +9,7 @@ public interface DonaterService {
 
     List<Donater> getAllDonaters();
 
-    Donation addDonation(Long donaterId, Donation donation);
+    String addDonation(Long donaterId, String donation, Integer value);
 
-    List<Donation> getDonaterDonations(Long id);
+    List<String> getDonaterDonations(Long id);
 }
